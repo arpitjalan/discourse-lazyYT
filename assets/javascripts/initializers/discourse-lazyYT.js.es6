@@ -8,11 +8,6 @@ export default {
       $('.lazyYT', $elem).lazyYT();
     };
 
-    // Run it once the page loads for good measure.
-    Em.run('applyYtlite', function() {
-      applyLazyYT();
-    });
-
     var decorate = function(klass, evt) {
       klass.reopen({
         applyLazyYT: function($elem) {
