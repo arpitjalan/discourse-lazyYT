@@ -11,10 +11,9 @@ register_asset "javascripts/initializers/discourse-lazyYT.js.es6"
 register_asset "stylesheets/lazyYT.css"
 
 
-# Onebox
+# YouTube Onebox
 class Onebox::Engine::YoutubeOnebox
   include Onebox::Engine
-
 
   matches_regexp(/^https?:\/\/(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)\/.+$/)
 
