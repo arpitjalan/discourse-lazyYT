@@ -4,7 +4,7 @@
 # authors: Arpit Jalan
 
 # javascript
-register_asset "javascripts/vendor/lazyYT.js"
+register_asset "javascripts/lazyYT.js"
 register_asset "javascripts/initializers/discourse-lazyYT.js.es6"
 
 # stylesheet
