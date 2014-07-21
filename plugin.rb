@@ -26,5 +26,4 @@ class Onebox::Engine::YoutubeOnebox
 
     rewrite_agnostic(append_params(html))
   end
-
 end
