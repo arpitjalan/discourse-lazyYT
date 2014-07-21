@@ -1,27 +1,17 @@
-# name: Discourse YouTube Lite Embed
-# about: Uses the YouTube Lite Embed plugin embed fast light-weight YouTube videos
+# name: Discourse lazyYT
+# about: Uses the lazyYT plugin to lazy load Youtube videos
 # version: 0.1
 # authors: Arpit Jalan
 
+# javascript
+register_asset "javascripts/vendor/lazyYT.js"
+register_asset "javascripts/initializers/discourse-lazyYT.js.es6"
 
-register_asset "javascripts/vendor/jquery.lazyload.js"
-register_asset "javascripts/vendor/lite-youtube.js"
+# stylesheet
+register_asset "stylesheets/lazyYT.css"
 
-register_asset "stylesheets/discourse-youtube-lite-embed.scss"
 
-# First, load the Engine stuff
-Onebox::Engine
-Onebox::Engine::YoutubeOnebox
-
-# Now, remove it.
-Onebox::Engine::WhitelistedGenericOnebox.whitelist.delete "youtube.com"
-[:YoutubeOnebox, :YouTubeOnebox].each do |engine|
-    begin
-        Onebox::Engine::send(:remove_const, engine)
-    rescue
-    end
-end
-
+# Onebox
 class Onebox::Engine::YoutubeOnebox
   include Onebox::Engine
 
@@ -49,8 +39,7 @@ class Onebox::Engine::YoutubeOnebox
         if video_id
           # Avoid making HTTP requests if we are able to get the video ID from the
           # URL.
-          # html = "<iframe width=\"480\" height=\"270\" src=\"https://www.youtube.com/embed/#{video_id}?feature=oembed\" frameborder=\"0\" allowfullscreen></iframe>"
-          html = "<div class=\"lite\" id=\"#{video_id}\" style=\"width:640px;height:360px;\"></div>"
+          html = "<div class=\"lazyYT\" data-youtube-id=\"#{video_id}\" data-width=\"480\" data-height=\"270\"></div>"
         else
           # Fall back to making HTTP requests.
           html = raw[:html] || ""

@@ -1,4 +1,4 @@
-discourse-youtube-lite-embed
+Discourse lazyYT
 ============================
 
 License
